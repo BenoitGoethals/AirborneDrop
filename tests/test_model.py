@@ -11,6 +11,11 @@ class TestPlane(unittest.TestCase):
         self.jump_master = JumpMaster("Test Master")
 
     def test_add_jumper(self):
+        """
+        Adds a jumper to the plane at the specified position.
+
+        :return: None
+        """
         self.plane.add_jumper(self.jumper, 1, SitePlane.STARBOARD)
         self.assertEqual(self.plane.starboard_cargo()[TypeJumper.Jumper][1], self.jumper)
 
