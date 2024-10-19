@@ -1,0 +1,1 @@
+Cargo manifest creator
