@@ -64,10 +64,12 @@ class Jumper:
         __hash__(): Returns a hash value based on the soldier's serial number.
     """
     soldier: Soldier
-    jump_count: int = 0
+    material:bool
+    nbr_parachute_dorsal:str
+    nbr_parachute_ventral:str
 
     def __str__ (self):
-        return f"{self.soldier.serial} {self.jump_count} {self.soldier.name} {self.soldier.first_name} {self.soldier.rank}"
+        return f"{self.soldier.serial} {self.nbr_parachute_dorsal} {self.material} {self.nbr_parachute_ventral} {self.soldier.name} {self.soldier.first_name} {self.soldier.rank}"
 
     def __repr__ (self):
         return str (self)
@@ -228,16 +230,16 @@ class Plane:
 if __name__ == '__main__':
     p = Plane ("c-130", "h500")
     for c in range (1,6):
-        jm1 = JumpMaster(Soldier(serial="R" + str(c), name=f"soldier {c} JM", first_name=f"soldier {c}", rank="sm"))
+        jm1 = JumpMaster(Soldier(serial="R" + str(c), name=f"soldier {c} JM", first_name=f"soldier {c}", rank="sm"),nbr_parachute_dorsal="sdfsd",nbr_parachute_ventral="sdfsd",material=True)
         p.add_jumper(jm1, c, SitePlane.STARBOARD)
         jm2 = JumpMaster(Soldier(serial="R" + str(c + 99), name=f"soldier board JM {c}", first_name=f"soldier board {c}",
-                            rank="sm"))
+                            rank="sm"),nbr_parachute_dorsal="sdfsd",nbr_parachute_ventral="sdfsd",material=True)
         p.add_jumper(jm2, c, SitePlane.BROAD)
     for c in range (6, 31):
-        j1 = Jumper (Soldier (serial="R"+str (c), name=f"soldier {c}", first_name=f"soldier {c}", rank="sm"))
+        j1 = Jumper (Soldier (serial="R"+str (c), name=f"soldier {c}", first_name=f"soldier {c}", rank="sm"),nbr_parachute_dorsal="sdfsd",nbr_parachute_ventral="sdfsd",material=True)
         p.add_jumper (j1, c, SitePlane.STARBOARD)
         j2 = Jumper (Soldier (serial="R"+str (c + 99), name=f"soldier board j2 {c}", first_name=f"soldier board {c}",
-                              rank="sm"))
+                              rank="sm"),nbr_parachute_dorsal="sdfsd",nbr_parachute_ventral="sdfsd",material=True)
         p.add_jumper (j2, c, SitePlane.BROAD)
     jumpers = p.starboard_cargo ()[TypeJumper.Jumper]
     print (p.cargo ())
